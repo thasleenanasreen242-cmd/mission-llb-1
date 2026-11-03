@@ -3,87 +3,88 @@
 import { useState } from "react";
 
 const subjects = [
-  { code: "CP01", name: "Law of Contracts", detail: "Offer, acceptance, consideration, capacity and remedies", tag: "Core paper" },
-  { code: "CP02", name: "Law of Torts", detail: "Negligence, liability, defences and consumer protection", tag: "Core paper" },
-  { code: "CP03", name: "Constitutional Law I", detail: "Constitutional foundations, rights and the State", tag: "Core paper" },
-  { code: "CP04", name: "Family Law I", detail: "Marriage, divorce, maintenance, adoption and guardianship", tag: "Core paper" },
-  { code: "CP05", name: "Law of Crimes I", detail: "General principles, offences and criminal liability", tag: "Core paper" },
-  { code: "OP01", name: "Legal Language", detail: "Legal vocabulary, interpretation, drafting and research", tag: "Optional paper" },
+  { code: "01", title: "Law of Contracts", meta: "CP01", detail: "Build a strong command of agreements, consideration, capacity and remedies." },
+  { code: "02", title: "Law of Torts", meta: "CP02", detail: "Understand negligence, liability, defences and the principles behind civil wrongs." },
+  { code: "03", title: "Constitutional Law I", meta: "CP03", detail: "Explore constitutional structure, fundamental rights and the meaning of State." },
+  { code: "04", title: "Family Law I", meta: "CP04", detail: "Study marriage, divorce, maintenance, adoption and guardianship." },
+  { code: "05", title: "Law of Crimes I", meta: "CP05", detail: "Learn the foundations of criminal liability, offences and general exceptions." },
+  { code: "06", title: "Legal Language", meta: "OP01", detail: "Develop precision in legal terminology, interpretation and drafting." },
 ];
 
 const plans = [
-  { name: "Starter", price: "Free", period: "forever", description: "Build a steady study habit.", features: ["Limited topic library", "Basic study planner", "Weekly revision checklist", "Community updates"], action: "Start for free", featured: false },
-  { name: "Scholar", price: "₹199", period: "per month", description: "A complete study companion.", features: ["Full subject-wise notes", "Case law briefs and examples", "PYQ-focused preparation", "Personal progress dashboard", "Revision reminders"], action: "Choose Scholar", featured: true },
-  { name: "Annual", price: "₹1,499", period: "per year", description: "Stay prepared all academic year.", features: ["Everything in Scholar", "Annual study roadmap", "Downloadable revision packs", "Priority learning support", "Save more than monthly"], action: "Choose Annual", featured: false },
+  { name: "Essential", price: "Free", note: "A clear place to begin", items: ["Starter learning resources", "Basic study planning", "Progress overview"], featured: false },
+  { name: "Pro Scholar", price: "₹199", note: "For serious, structured preparation", items: ["Full topic-wise learning library", "Case briefs and exam frameworks", "Personal study dashboard", "Revision and progress tools"], featured: true },
+  { name: "Annual Access", price: "₹1,499", note: "One plan for the academic year", items: ["Everything in Pro Scholar", "Annual study roadmap", "Downloadable revision packs", "Priority learning support"], featured: false },
 ];
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSubject, setActiveSubject] = useState("CP02");
-  const [faqOpen, setFaqOpen] = useState<number | null>(0);
-  const selected = subjects.find((subject) => subject.code === activeSubject) ?? subjects[1];
+  const [active, setActive] = useState("01");
+  const [menu, setMenu] = useState(false);
+  const selected = subjects.find((item) => item.code === active) ?? subjects[0];
 
   return (
     <main>
-      <div className="announcement">A smarter way to prepare for your law exams <span>Explore Mission LLB ↓</span></div>
-      <header className="site-header">
-        <a className="brand" href="#"><span className="brand-mark">M</span><span>MISSION <b>LLB 1</b><small>LEARN WITH PURPOSE</small></span></a>
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">☰</button>
-        <nav className={menuOpen ? "nav-links open" : "nav-links"}>
-          <a href="#features" onClick={() => setMenuOpen(false)}>Why Mission LLB</a>
-          <a href="#subjects" onClick={() => setMenuOpen(false)}>Subjects</a>
-          <a href="#how" onClick={() => setMenuOpen(false)}>How it works</a>
-          <a href="#plans" onClick={() => setMenuOpen(false)}>Plans</a>
+      <div className="topline"><span><i /> A NEW STANDARD FOR LAW STUDY</span><span>BUILT FOR THE NEXT GENERATION OF LEGAL MINDS <b>↗</b></span></div>
+      <header className="header">
+        <a className="identity" href="#"><span className="identity-symbol">M<span>.</span></span><span className="identity-name">MISSION<span>LLB / 01</span></span></a>
+        <button className="mobile-menu" onClick={() => setMenu(!menu)} aria-label="Toggle navigation">{menu ? "×" : "☰"}</button>
+        <nav className={menu ? "navigation navigation-open" : "navigation"}>
+          <a href="#platform" onClick={() => setMenu(false)}>Platform</a><a href="#curriculum" onClick={() => setMenu(false)}>Curriculum</a><a href="#method" onClick={() => setMenu(false)}>Method</a><a href="#membership" onClick={() => setMenu(false)}>Membership</a>
         </nav>
-        <a className="nav-cta" href="#plans">Get started <span>↗</span></a>
+        <a className="header-action" href="#membership">ENTER THE PLATFORM <span>↗</span></a>
       </header>
 
       <section className="hero">
-        <div className="hero-copy">
-          <div className="eyebrow"><span className="eyebrow-dot" /> BUILT FOR LAW STUDENTS</div>
-          <h1>Your law degree.<br /><em>Your strategy.</em><br />Your mission.</h1>
-          <p className="hero-lede">Make every study session count. Learn the law with clear notes, important cases and a plan that keeps you moving forward.</p>
-          <div className="hero-actions"><a className="button button-dark" href="#plans">Start your journey <span>↗</span></a><a className="text-link" href="#features">Discover the platform <span>↓</span></a></div>
-          <div className="hero-proof"><div className="proof-avatars"><i>LL</i><i>⚖</i><i>✦</i></div><span>Focused learning. Consistent progress.</span></div>
+        <div className="hero-grid" />
+        <div className="hero-main">
+          <div className="overline"><span className="overline-mark">✳</span> THE FUTURE OF LEGAL LEARNING</div>
+          <h1>Think sharper.<br /><span>Study smarter.</span><br />Lead with law.</h1>
+          <p className="hero-description">A focused learning ecosystem for law students. Master legal concepts, understand landmark cases and prepare with a strategy built around your progress.</p>
+          <div className="hero-buttons"><a className="primary-button" href="#platform">EXPLORE THE PLATFORM <span>↗</span></a><a className="secondary-button" href="#curriculum">DISCOVER THE CURRICULUM <span>↓</span></a></div>
+          <div className="hero-footnote"><span className="signal" /> STRUCTURE YOUR STUDY. OWN YOUR PROGRESS.</div>
         </div>
-        <div className="hero-art">
-          <div className="art-glow" />
-          <div className="orbit orbit-one" /><div className="orbit orbit-two" />
-          <div className="law-seal"><span>THE PURSUIT OF</span><strong>JUSTICE</strong><b>⚖</b><small>KNOWLEDGE · DISCIPLINE · PURPOSE</small></div>
-          <div className="floating-note note-top"><span className="note-icon">✦</span><div><b>Study with direction</b><small>One topic at a time</small></div></div>
-          <div className="floating-note note-bottom"><span className="note-check">✓</span><div><b>Progress, not pressure</b><small>Build your momentum</small></div></div>
-          <div className="art-caption">THE NEXT CHAPTER STARTS HERE <span>01 / 06</span></div>
+        <div className="hero-visual" aria-label="Illustration of a legal learning dashboard">
+          <div className="visual-orbit orbit-a" /><div className="visual-orbit orbit-b" />
+          <div className="visual-label label-top">MISSION CONTROL <span>SYS.01 / ACTIVE</span></div>
+          <div className="dashboard-card">
+            <div className="dash-head"><div><span className="dash-eyebrow">YOUR LEARNING SPACE</span><h3>Good evening, Scholar<span>.</span></h3></div><div className="dash-avatar">S</div></div>
+            <div className="dash-progress"><div><span>WEEKLY STUDY TARGET</span><b>72<span>%</span></b></div><div className="progress-track"><i /></div><small>4.3 of 6 hours completed this week</small></div>
+            <div className="dash-next"><div className="next-icon">§</div><div><small>NEXT UP · CP02</small><b>Negligence &amp; Duty of Care</b><span>Continue learning <i>↗</i></span></div><div className="next-arrow">↗</div></div>
+            <div className="dash-bottom"><span><i /> 06 SUBJECTS</span><span>PERSONAL STUDY TRACKER</span></div>
+          </div>
+          <div className="floating-chip chip-one"><span>↗</span><div><b>Stay on track</b><small>One goal at a time</small></div></div>
+          <div className="floating-chip chip-two"><span>✳</span><div><b>Case intelligence</b><small>Principle to application</small></div></div>
+          <div className="visual-index">01 <span>/</span> 04</div>
+        </div>
+        <div className="hero-bottom"><span>01 / ACADEMIC INTELLIGENCE</span><span>DESIGNED FOR FOCUSED LEARNING</span><span>SCROLL TO EXPLORE ↓</span></div>
+      </section>
+
+      <section className="metrics"><div><b>01</b><span>ONE CONNECTED<br />LEARNING SPACE</span></div><div><b>06</b><span>CORE STUDY<br />AREAS TO EXPLORE</span></div><div><b>∞</b><span>ROOM TO GROW<br />AT YOUR OWN PACE</span></div><div className="metrics-note">LESS NOISE.<br /><em>MORE KNOWLEDGE.</em></div></section>
+
+      <section className="platform section-pad" id="platform">
+        <div className="section-heading"><div><div className="section-code">[ 01 — THE PLATFORM ]</div><h2>More than notes.<br /><span>A system for progress.</span></h2></div><p>Legal education deserves more than scattered PDFs and last-minute revision. Mission LLB brings your learning journey into one organised, purposeful environment.</p></div>
+        <div className="platform-grid">
+          <article className="platform-card card-large"><div className="card-top"><span>01 / LEARN</span><span>↗</span></div><div className="card-graphic graphic-learn"><div className="graphic-page"><small>LEGAL PRINCIPLE / 001</small><b>Understand<br />the law.</b><i>§</i><span>CONCEPT → CASE → APPLICATION</span></div></div><h3>Concept-first learning</h3><p>Clear, structured explanations that help you understand the principle before memorising the answer.</p></article>
+          <article className="platform-card"><div className="card-top"><span>02 / ANALYSE</span><span>↗</span></div><div className="card-graphic graphic-case"><div className="case-mark">“</div><div className="case-lines"><i /><i /><i /><i /></div><b>CASE<br />BRIEFS</b></div><h3>Case law, made clear</h3><p>Connect landmark judgments to the legal rules they establish.</p></article>
+          <article className="platform-card"><div className="card-top"><span>03 / PLAN</span><span>↗</span></div><div className="card-graphic graphic-plan"><div className="plan-calendar"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><i>01</i><i>02</i><i>03</i><i>04</i></div><div className="plan-caption">YOUR WEEK<br /><b>IN FOCUS</b></div></div><h3>Intentional study planning</h3><p>Turn your syllabus into manageable goals, revision blocks and milestones.</p></article>
+          <article className="platform-card"><div className="card-top"><span>04 / ADVANCE</span><span>↗</span></div><div className="card-graphic graphic-track"><div className="track-ring"><span>72<small>%</small></span></div><div className="track-label">PROGRESS<br />IS PERSONAL</div></div><h3>Visible progress</h3><p>Know what you have covered and where to focus your energy next.</p></article>
         </div>
       </section>
 
-      <section className="ticker"><span>LEARN WITH CLARITY</span><b>✳</b><span>REVISE WITH PURPOSE</span><b>✳</b><span>PREPARE WITH CONFIDENCE</span><b>✳</b><span>MAKE YOUR MARK</span></section>
-
-      <section className="section intro-section" id="features">
-        <div className="section-kicker">01 — THE MISSION</div>
-        <div className="intro-grid"><h2>Law school is demanding.<br /><em>Your study system<br />should make it simpler.</em></h2><div className="intro-copy"><p>Mission LLB 1 brings your learning resources and exam preparation into one focused space. No scattered materials. No studying without direction. Just a practical system to help you understand, remember and apply the law.</p><a className="under-link" href="#how">See how it works <span>↗</span></a></div></div>
-        <div className="feature-grid">
-          <article className="feature-card"><span className="feature-number">01</span><div className="feature-icon">▤</div><h3>Understand the subject</h3><p>Structured notes that break complex legal topics into clear, manageable concepts.</p></article>
-          <article className="feature-card"><span className="feature-number">02</span><div className="feature-icon">§</div><h3>Learn through cases</h3><p>Case briefs that connect legal principles with landmark judicial decisions.</p></article>
-          <article className="feature-card"><span className="feature-number">03</span><div className="feature-icon">◷</div><h3>Plan your revision</h3><p>Turn your syllabus into a realistic study plan with milestones and revision time.</p></article>
-          <article className="feature-card"><span className="feature-number">04</span><div className="feature-icon">↗</div><h3>Track your progress</h3><p>See what you have covered, what needs attention and what comes next.</p></article>
-        </div>
+      <section className="curriculum section-pad" id="curriculum">
+        <div className="curriculum-head"><div><div className="section-code section-code-light">[ 02 — CURRICULUM ]</div><h2>Build your legal<br /><span>foundation.</span></h2></div><p>Explore a structured first-year law learning pathway. Select a subject to preview its focus.</p></div>
+        <div className="curriculum-layout"><div className="subject-menu">{subjects.map((item)=><button key={item.code} className={active===item.code?"subject-row selected":"subject-row"} onClick={()=>setActive(item.code)}><span>{item.code}</span><b>{item.title}</b><i>↗</i></button>)}</div><div className="subject-preview"><div className="preview-top"><span>SUBJECT PROFILE / {selected.meta}</span><span>0{selected.code}</span></div><div className="preview-main"><div className="preview-glyph">§</div><div className="preview-tag">FOUNDATIONAL STUDY AREA</div><h3>{selected.title}<span>.</span></h3><p>{selected.detail}</p><div className="preview-bottom"><span>CONCEPTS / CASES / EXAM PRACTICE</span><span>EXPLORE <b>↗</b></span></div></div></div></div>
+        <div className="curriculum-disclaimer">Illustrative subject pathway. Final course availability and university-specific syllabus mapping will be confirmed before enrolment.</div>
       </section>
 
-      <section className="subjects-section" id="subjects"><div className="section subject-inner"><div className="section-kicker light-kicker">02 — YOUR LEARNING SPACE</div><div className="subject-heading"><h2>One syllabus.<br /><em>A clearer way through.</em></h2><p>Explore your subjects and build a stronger foundation, topic by topic.</p></div>
-        <div className="subject-browser"><div className="subject-list">{subjects.map((subject) => <button key={subject.code} className={activeSubject === subject.code ? "subject-tab active" : "subject-tab"} onClick={() => setActiveSubject(subject.code)}><span>{subject.code}</span><b>{subject.name}</b><span className="tab-arrow">↗</span></button>)}</div><div className="subject-detail"><div className="detail-top"><span>{selected.code} / SUBJECT OVERVIEW</span><span className="detail-star">✳</span></div><div className="detail-content"><span className="subject-tag">{selected.tag}</span><h3>{selected.name}</h3><p>{selected.detail}.</p><div className="detail-bottom"><span>LEARN AT YOUR PACE</span><span className="detail-symbol">§</span></div></div></div></div>
-        <p className="subject-note">Subject names shown as an illustrative first-year law curriculum. Available courses and materials will be confirmed before enrolment.</p>
-      </div></section>
+      <section className="method section-pad" id="method"><div className="section-code">[ 03 — THE METHOD ]</div><div className="method-heading"><h2>Progress is a<br /><span>designed habit.</span></h2><p>A repeatable cycle that transforms a large syllabus into clear, achievable steps.</p></div><div className="method-steps"><article><span>01</span><div className="method-line" /><h3>Orient</h3><p>Choose a subject and define the next outcome.</p></article><article><span>02</span><div className="method-line" /><h3>Understand</h3><p>Learn the concept and connect it to cases.</p></article><article><span>03</span><div className="method-line" /><h3>Apply</h3><p>Practise structuring answers and solving problems.</p></article><article><span>04</span><div className="method-line" /><h3>Advance</h3><p>Review progress and move to your next goal.</p></article></div></section>
 
-      <section className="section how-section" id="how"><div className="section-kicker">03 — THE METHOD</div><div className="how-heading"><h2>Small steps.<br /><em>Meaningful progress.</em></h2><p>A simple learning cycle designed to help you stay consistent throughout the semester.</p></div><div className="steps"><article><span>01</span><div className="step-line" /><h3>Choose your subject</h3><p>Start with the paper or topic you need to work on today.</p></article><article><span>02</span><div className="step-line" /><h3>Learn the concept</h3><p>Use focused notes and case explanations to understand the law.</p></article><article><span>03</span><div className="step-line" /><h3>Practise and revise</h3><p>Work through questions and revisit topics on your schedule.</p></article><article><span>04</span><div className="step-line" /><h3>Track your growth</h3><p>Mark progress and keep your next learning goal in sight.</p></article></div></section>
+      <section className="manifesto"><div className="manifesto-symbol">M<span>.</span></div><div className="manifesto-copy"><div className="section-code section-code-light">THE MISSION STATEMENT</div><h2>Knowledge is power.<br /><span>Preparation is leverage.</span></h2><p>Build the discipline. Develop the clarity. Make your ambition measurable.</p></div><div className="manifesto-side">THINK<br />BEYOND<br /><b>THE EXAM.</b></div></section>
 
-      <section className="quote-band"><span className="quote-mark">“</span><blockquote>Success in law is not just about what you know.<br /><em>It is about how consistently you prepare.</em></blockquote><span className="quote-credit">THE MISSION LLB MINDSET</span></section>
+      <section className="membership section-pad" id="membership"><div className="section-heading"><div><div className="section-code">[ 04 — MEMBERSHIP ]</div><h2>Choose your level<br /><span>of commitment.</span></h2></div><p>Start with the essentials. Upgrade when you are ready for a deeper, more complete learning experience.</p></div><div className="membership-grid">{plans.map((plan)=><article key={plan.name} className={plan.featured?"price-card price-featured":"price-card"}>{plan.featured&&<div className="recommended">RECOMMENDED</div>}<div className="price-tier">{plan.name}</div><p>{plan.note}</p><div className="price-value">{plan.price}{plan.price!=="Free"&&<small> / {plan.name==="Annual Access"?"year":"month"}</small>}</div><a className={plan.featured?"price-button price-button-light":"price-button"} href="mailto:hello@missionllb.com?subject=Mission%20LLB%20membership%20enquiry">REQUEST ACCESS <span>↗</span></a><div className="price-rule" /><div className="includes">ACCESS INCLUDES</div><ul>{plan.items.map((item)=><li key={item}><span>＋</span>{item}</li>)}</ul></article>)}</div><p className="pricing-disclaimer">Preview pricing only. Secure registration, payment processing and subscription access are not yet active. No payment is collected on this website preview.</p></section>
 
-      <section className="section pricing-section" id="plans"><div className="section-kicker">04 — MEMBERSHIP</div><div className="pricing-heading"><div><h2>Choose your<br /><em>way forward.</em></h2></div><p>Start with the essentials or unlock a more complete study experience. Choose the plan that fits your goals.</p></div><div className="plans-grid">{plans.map((plan) => <article className={plan.featured ? "plan-card featured-plan" : "plan-card"} key={plan.name}>{plan.featured && <div className="popular-label">MOST POPULAR</div>}<div className="plan-name">{plan.name}</div><p className="plan-description">{plan.description}</p><div className="plan-price">{plan.price}<small>{plan.period}</small></div><a className={plan.featured ? "button button-light" : "button button-outline"} href="mailto:hello@missionllb.com?subject=Mission%20LLB%20membership%20enquiry">{plan.action} <span>↗</span></a><div className="plan-divider" /><div className="includes-label">WHAT'S INCLUDED</div><ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul></article>)}</div><p className="pricing-note">Illustrative launch pricing. Membership features, payment processing and subscription access will be activated after setup. No payment is collected on this preview website.</p></section>
-
-      <section className="faq-section"><div className="section faq-grid"><div><div className="section-kicker light-kicker">05 — GOOD TO KNOW</div><h2>A few things<br /><em>you may be wondering.</em></h2><p>More details about the Mission LLB learning experience.</p></div><div className="faq-list">{[{q:"Who is Mission LLB 1 for?",a:"It is being designed for law students who want structured study materials, a practical revision plan and a more organised way to prepare for examinations."},{q:"Will the platform cover my university syllabus?",a:"The first version is planned around a structured first-year law curriculum. Exact university-specific syllabus mapping and course availability will be confirmed before enrolment."},{q:"Can I study on my phone?",a:"Yes. The website is designed to work across mobile, tablet and desktop screens."},{q:"How do subscriptions work?",a:"The membership options shown are planned launch tiers. Secure accounts, subscription billing and paid content access will be enabled only after the required services are connected."}].map((item,i)=><div className="faq-item" key={item.q}><button onClick={()=>setFaqOpen(faqOpen===i?null:i)}><span>{item.q}</span><b>{faqOpen===i?"−":"+"}</b></button>{faqOpen===i&&<p>{item.a}</p>}</div>)}</div></div></section>
-
-      <section className="final-cta"><div className="section-kicker">YOUR NEXT CHAPTER</div><h2>Make your preparation<br /><em>part of your progress.</em></h2><a className="button button-dark" href="#plans">Explore membership <span>↗</span></a><div className="cta-watermark">M</div></section>
-      <footer className="footer"><a className="brand footer-brand" href="#"><span className="brand-mark">M</span><span>MISSION <b>LLB 1</b><small>LEARN WITH PURPOSE</small></span></a><p>Built for focused learners. Made for the journey ahead.</p><div className="footer-bottom"><span>© 2026 Mission LLB 1. All rights reserved.</span><span>Educational platform preview · Terms and policies to be published</span><a href="mailto:hello@missionllb.com">Contact ↗</a></div></footer>
+      <section className="closing"><div className="closing-grid" /><div className="closing-code">MISSION LLB / YOUR NEXT CHAPTER</div><h2>Make your ambition<br /><span>actionable.</span></h2><a className="primary-button" href="#membership">START WITH A PLAN <span>↗</span></a><div className="closing-coordinates">11° N / 75° E<br />BUILT FOR THE FUTURE OF LEARNING</div></section>
+      <footer className="footer"><a className="identity footer-identity" href="#"><span className="identity-symbol">M<span>.</span></span><span className="identity-name">MISSION<span>LLB / 01</span></span></a><div className="footer-tagline">A MORE INTENTIONAL WAY TO STUDY LAW.</div><div className="footer-bottom"><span>© 2026 MISSION LLB 1. ALL RIGHTS RESERVED.</span><span>EDUCATIONAL PLATFORM PREVIEW</span><a href="mailto:hello@missionllb.com">CONTACT ↗</a></div></footer>
     </main>
   );
 }
