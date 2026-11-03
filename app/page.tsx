@@ -31,7 +31,7 @@ export default function Home() {
         <nav className={menu ? "navigation navigation-open" : "navigation"}>
           <a href="#platform" onClick={() => setMenu(false)}>Platform</a><a href="#curriculum" onClick={() => setMenu(false)}>Curriculum</a><a href="#method" onClick={() => setMenu(false)}>Method</a><a href="#membership" onClick={() => setMenu(false)}>Membership</a>
         </nav>
-        <a className="header-action" href="#membership">ENTER THE PLATFORM <span>↗</span></a>
+        <a className="header-action" href="/login">STUDENT LOGIN <span>↗</span></a>
       </header>
 
       <section className="hero">
@@ -40,7 +40,7 @@ export default function Home() {
           <div className="overline"><span className="overline-mark">✳</span> THE FUTURE OF LEGAL LEARNING</div>
           <h1>Think sharper.<br /><span>Study smarter.</span><br />Lead with law.</h1>
           <p className="hero-description">A focused learning ecosystem for law students. Master legal concepts, understand landmark cases and prepare with a strategy built around your progress.</p>
-          <div className="hero-buttons"><a className="primary-button" href="#platform">EXPLORE THE PLATFORM <span>↗</span></a><a className="secondary-button" href="#curriculum">DISCOVER THE CURRICULUM <span>↓</span></a></div>
+          <div className="hero-buttons"><a className="primary-button" href="/signup">CREATE YOUR ACCOUNT <span>↗</span></a><a className="secondary-button" href="#curriculum">DISCOVER THE CURRICULUM <span>↓</span></a></div>
           <div className="hero-footnote"><span className="signal" /> STRUCTURE YOUR STUDY. OWN YOUR PROGRESS.</div>
         </div>
         <div className="hero-visual" aria-label="Illustration of a legal learning dashboard">
